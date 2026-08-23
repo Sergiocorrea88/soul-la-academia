@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sergiocorrea88.github.io/soul-la-academia/sitemap.xml

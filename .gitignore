@@ -1,0 +1,37 @@
+# ---- Windows ----
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+desktop.ini
+$RECYCLE.BIN/
+
+# ---- OneDrive ----
+*.tmp
+*.laccdb
+~$*
+
+# ---- macOS ----
+.DS_Store
+._*
+
+# ---- Editores ----
+.vscode/
+.idea/
+*.code-workspace
+*.swp
+*~
+
+# ---- Node (por si más adelante agregas herramientas de build) ----
+node_modules/
+npm-debug.log*
+yarn-error.log*
+.env
+.env.local
+
+# ---- Archivos de trabajo que no van al repositorio ----
+# Originales en alta resolución de las fotos: se conservan en el disco
+# como respaldo para reexportar, pero no tienen por qué viajar al repo.
+assets/_originales/
+/borradores/
+*.psd
+*.ai
