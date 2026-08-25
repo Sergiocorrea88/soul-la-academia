@@ -93,7 +93,7 @@
 
 /* ---------- 3. Formulario de inscripción ---------- */
 (function () {
-  var form = document.getElementById("inscripcion");
+  var form = document.getElementById("contacto-form");
   if (!form) return;
 
   form.addEventListener("submit", function (e) {
@@ -111,7 +111,7 @@
     var mensaje = form.mensaje.value.trim();
 
     var lineas = [
-      "¡Hola Soul La Academia! Quiero inscribirme 🎶",
+      "¡Hola Soul La Academia! Me interesa tomar clases 🎶",
       "",
       "Nombre: " + form.nombre.value.trim(),
       "Instrumento/curso: " + form.instrumento.value,

@@ -222,7 +222,7 @@ header {
 .nav-pill {
   display: flex;
   align-items: center;
-  gap: 26px;
+  gap: 20px;
   background: var(--nav-bg);
   border: 1px solid var(--nav-border);
   backdrop-filter: blur(14px);
@@ -253,19 +253,23 @@ header {
 
 .brand img { height: 32px; width: 32px; border-radius: 50%; }
 
+/* nowrap a propósito: con seis ítems, permitir el salto de línea
+   partía la píldora en dos filas. Si no caben, entra el menú
+   hamburguesa (ver la consulta de 1024px al final). */
 nav.links {
   display: flex;
-  gap: 22px;
-  flex-wrap: wrap;
+  gap: 14px;
+  flex-wrap: nowrap;
 }
 
 nav.links a {
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
   color: var(--text-dim);
   transition: color 0.2s, background 0.2s;
-  padding: 6px 10px;
+  padding: 6px 9px;
   border-radius: 999px;
 }
 
@@ -469,12 +473,21 @@ nav.links a:hover { color: var(--accent-text); background: var(--tint); }
    sobre fotografía (hero). La base sirve a las secciones; el hero la
    sobreescribe más abajo. */
 .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   color: var(--accent-text);
   letter-spacing: 0.25em;
   text-transform: uppercase;
   font-size: 0.78rem;
   margin-bottom: 14px;
 }
+
+/* Iconos de línea. Heredan el color del texto que acompañan, así que
+   funcionan en los dos temas sin declarar color propio. */
+.ico { flex: none; }
+.eyebrow .ico { width: 14px; height: 14px; }
+.contact-list .ic .ico { width: 18px; height: 18px; }
 
 .hero .eyebrow {
   color: var(--on-media-accent);
@@ -519,6 +532,12 @@ nav.links a:hover { color: var(--accent-text); background: var(--tint); }
 }
 .social-rail a:hover { border-color: var(--on-media-accent); color: var(--on-media-accent); }
 
+/* Logos de redes. Heredan currentColor, así que siguen al tema y al
+   contexto (claros sobre la foto del hero, neutros en el pie). */
+.ico-red { width: 17px; height: 17px; flex: none; }
+.footer-social .ico-red { width: 19px; height: 19px; }
+.float-wa .ico-red { width: 30px; height: 30px; }
+
 /* El botón del hero va sobre fotografía: mantiene el relleno de acento
    con texto claro en ambos temas. */
 .btn {
@@ -555,6 +574,71 @@ section.alt { background: var(--bg-alt); }
 .section-head { max-width: 700px; margin: 0 auto 50px; text-align: center; }
 .section-head h2 { font-size: clamp(1.9rem, 4vw, 2.8rem); }
 .section-head p { color: var(--text-dim); }
+
+
+/* ---------- Modalidades y servicios ---------- */
+.modalidad-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.modalidad-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 34px 28px;
+  text-align: center;
+  box-shadow: var(--card-shadow);
+  transition: border-color .2s, box-shadow .2s, transform .2s;
+}
+.modalidad-card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-4px);
+}
+
+.modalidad-icon {
+  display: grid;
+  place-items: center;
+  width: 68px;
+  height: 68px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: var(--tint-soft);
+  color: var(--accent-text);
+}
+.modalidad-icon .ico { width: 32px; height: 32px; }
+
+.modalidad-card h3 { font-size: 1.1rem; margin-bottom: 10px; }
+.modalidad-card p { color: var(--text-dim); margin: 0; font-size: 0.95rem; }
+
+.servicio-band {
+  margin-top: 26px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 28px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  box-shadow: var(--card-shadow);
+}
+.servicio-icon { display: grid; place-items: center; color: var(--accent-text); }
+.servicio-icon .ico { width: 44px; height: 44px; }
+.servicio-body h3 { font-size: 1.1rem; margin-bottom: 6px; }
+.servicio-body p { color: var(--text-dim); margin: 0; font-size: 0.95rem; }
+
+@media (max-width: 900px) {
+  .modalidad-grid { grid-template-columns: 1fr; }
+  .servicio-band {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    gap: 18px;
+  }
+}
 
 /* ---------- Nosotros ---------- */
 .about-grid {
@@ -1067,7 +1151,10 @@ footer {
 }
 
 /* ---------- Responsive ---------- */
-@media (max-width: 860px) {
+/* El menú completo de seis ítems necesita ~1180px. Por debajo de eso
+   entra el hamburguesa: mejor un menú desplegable que una barra
+   apretada o partida en dos filas. */
+@media (max-width: 1180px) {
   nav.links { display: none; }
   .menu-toggle { display: inline-block; }
   .nav-pill { flex: 1; }
