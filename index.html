@@ -4,18 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Soul La Academia | Escuela de Música en Bogotá</title>
-<meta name="description" content="Soul La Academia: escuela de música en Bogotá. Clases virtuales, presenciales y a domicilio de guitarra, piano, canto, batería, violín y más.">
+<meta name="description" content="Soul La Academia: escuela de música en Bogotá. Clases virtuales, presenciales en sede y a domicilio de guitarra, piano, canto, batería, violín y más.">
 <link rel="icon" href="assets/images/logo.png">
 <link rel="canonical" href="https://sergiocorrea88.github.io/soul-la-academia/">
 <meta name="author" content="Soul La Academia">
-<meta name="theme-color" content="#05040a">
+<meta name="theme-color" content="#ffffff" id="themeColor">
 
 <!-- Open Graph: define cómo se ve la tarjeta al compartir el enlace en WhatsApp, Facebook o LinkedIn -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_CO">
 <meta property="og:site_name" content="Soul La Academia">
 <meta property="og:title" content="Soul La Academia | Escuela de Música en Bogotá">
-<meta property="og:description" content="Clases virtuales, presenciales y a domicilio de guitarra, piano, canto, batería, bajo, violín, saxofón y ukelele. Cursos enfocados en los gustos y necesidades de cada estudiante.">
+<meta property="og:description" content="Clases virtuales, presenciales en sede y a domicilio de guitarra, piano, canto, batería, bajo, violín, saxofón y ukelele. Cursos enfocados en los gustos y necesidades de cada estudiante.">
 <meta property="og:url" content="https://sergiocorrea88.github.io/soul-la-academia/">
 <meta property="og:image" content="https://sergiocorrea88.github.io/soul-la-academia/assets/images/og-image.jpg">
 <meta property="og:image:alt" content="Estudiante de Soul La Academia interpretando guitarra en concierto">
@@ -23,12 +23,18 @@
 <!-- Twitter / X -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Soul La Academia | Escuela de Música en Bogotá">
-<meta name="twitter:description" content="Clases virtuales, presenciales y a domicilio de guitarra, piano, canto, batería, bajo, violín, saxofón y ukelele. Cursos enfocados en los gustos y necesidades de cada estudiante.">
+<meta name="twitter:description" content="Clases virtuales, presenciales en sede y a domicilio de guitarra, piano, canto, batería, bajo, violín, saxofón y ukelele. Cursos enfocados en los gustos y necesidades de cada estudiante.">
 <meta name="twitter:image" content="https://sergiocorrea88.github.io/soul-la-academia/assets/images/og-image.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script>
+/* Aplica el tema guardado ANTES de pintar la página.
+   Si esto fuera al final del body, el visitante vería un
+   parpadeo blanco antes de que entrara el tema oscuro. */
+(function(){try{var t=localStorage.getItem("soul-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}})();
+</script>
 <link rel="stylesheet" href="css/style.css">
 
 <!-- Datos estructurados: le dicen a Google que esto es una escuela de música local en Bogotá -->
@@ -38,7 +44,7 @@
   "@type": "MusicSchool",
   "name": "Soul La Academia",
   "alternateName": "Soul La Academia SAS",
-  "description": "Escuela de música en Bogotá con clases virtuales, presenciales y a domicilio de guitarra, piano, canto, batería, bajo, violín, saxofón y ukelele.",
+  "description": "Escuela de música en Bogotá con clases virtuales, presenciales en sede y a domicilio de guitarra, piano, canto, batería, bajo, violín, saxofón y ukelele.",
   "url": "https://sergiocorrea88.github.io/soul-la-academia/",
   "logo": "https://sergiocorrea88.github.io/soul-la-academia/assets/images/logo.png",
   "image": "https://sergiocorrea88.github.io/soul-la-academia/assets/images/og-image.jpg",
@@ -65,7 +71,7 @@
 <header>
   <div class="nav" id="nav">
     <div class="nav-pill">
-      <a href="index.html#inicio" class="brand"><img src="assets/images/logo.png" alt="Soul La Academia"> Soul La Academia</a>
+      <a href="index.html#inicio" class="brand"><img src="assets/images/logo.png" alt="Soul La Academia"> <span class="brand-name">Soul La Academia</span></a>
       <nav class="links">
         <a href="index.html#inicio">Inicio</a>
         <a href="index.html#nosotros">Nosotros</a>
@@ -74,8 +80,14 @@
         <a href="index.html#estudiantes">Estudiantes</a>
       </nav>
     </div>
-    <a class="nav-cta" href="#inscripcion">Inscríbete <span class="dot">&#9679;</span></a>
-    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">&#9776;</button>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Cambiar a tema oscuro" title="Cambiar tema">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8.2 8.2 0 0 1 9.5 4 8.3 8.3 0 1 0 20 14.5Z"/></svg>
+      </button>
+      <a class="nav-cta" href="#inscripcion">Inscríbete <span class="dot">&#9679;</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">&#9776;</button>
+    </div>
   </div>
 </header>
 
@@ -96,7 +108,7 @@
 
     <div class="eyebrow">Escuela de música · Bogotá, Colombia</div>
     <h1>Haz parte de<br>nuestra familia musical</h1>
-    <p>Clases virtuales, presenciales y a domicilio de guitarra, piano, canto, batería, bajo, violín, saxofón, ukelele y mucho más. Cursos enfocados en los gustos y necesidades de cada estudiante desde 2021.</p>
+    <p>Clases virtuales, presenciales en sede y a domicilio de guitarra, piano, canto, batería, bajo, violín, saxofón, ukelele y mucho más. Cursos enfocados en los gustos y necesidades de cada estudiante desde 2021.</p>
 
     <div class="hero-bottom">
       <div class="hero-actions">
@@ -115,12 +127,12 @@
 <!-- ---------- NOSOTROS ---------- -->
 <section id="nosotros">
   <div class="wrap">
-    <div class="num-label">01 &mdash; Quiénes somos</div>
+    <div class="eyebrow">Quiénes somos</div>
     <div class="about-grid">
       <div class="about-text">
         <div class="rule"></div>
         <h2>No somos solo<br>una escuela de música</h2>
-        <p>Somos una plataforma que le da vida a los sueños musicales de cada estudiante. Desde 2021 impartimos clases en Bogotá de manera virtual, presencial y a domicilio, con un portafolio de cursos libres en guitarra acústica, guitarra eléctrica, técnica vocal, piano, batería, bajo eléctrico, ukelele, violín, saxofón, iniciación musical y teoría musical.</p>
+        <p>Somos una plataforma que le da vida a los sueños musicales de cada estudiante. Desde 2021 impartimos clases en Bogotá de manera virtual, presencial en sede y a domicilio, con un portafolio de cursos libres en guitarra acústica, guitarra eléctrica, técnica vocal, piano, batería, bajo eléctrico, ukelele, violín, saxofón, iniciación musical y teoría musical.</p>
         <p>También ofrecemos cursos extracurriculares para instituciones y empresas interesadas en desarrollar su componente artístico. Todos nuestros cursos están enfocados en los gustos y necesidades de cada uno de nuestros estudiantes.</p>
       </div>
       <div class="about-media">
@@ -157,7 +169,6 @@
 <!-- ---------- PROGRAMAS ---------- -->
 <section class="alt" id="programas">
   <div class="wrap">
-    <div class="num-label" style="text-align:center;">02 &mdash; Programas</div>
     <div class="section-head">
       <div class="eyebrow">Programas</div>
       <h2>Nuestra oferta académica</h2>
@@ -204,8 +215,7 @@
       <div class="eyebrow">Instrumentos</div>
       <h2>¿Qué puedes aprender?</h2>
     </div>
-    <div class="instrument-carousel">
-      <div class="instrument-track">
+    <div class="instrument-grid">
       <div class="instrument-photo-card">
         <img src="assets/images/collage5.webp" alt="Técnica vocal (Canto)" loading="lazy">
         <span class="instrument-icon-badge"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="18" y="6" width="12" height="20" rx="6"/><path d="M13 22a11 11 0 0 0 22 0"/><line x1="24" y1="33" x2="24" y2="41"/><line x1="16" y1="41" x2="32" y2="41"/></svg></span>
@@ -265,67 +275,6 @@
         <img src="assets/images/instruments/teoria.webp" alt="Teoría musical" loading="lazy">
         <span class="instrument-icon-badge"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 14c6-3 12-3 16 0v20c-4-3-10-3-16 0z"/><path d="M40 14c-6-3-12-3-16 0v20c4-3 10-3 16 0z"/><circle cx="24" cy="8" r="2.5" fill="currentColor" stroke="none"/><line x1="26.5" y1="8" x2="26.5" y2="2"/></svg></span>
         <span class="instrument-photo-label">Teoría musical</span>
-      </div>
-      <div class="instrument-photo-card" aria-hidden="true">
-        <img src="assets/images/collage5.webp" alt="Técnica vocal (Canto)" loading="lazy">
-        <span class="instrument-icon-badge"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="18" y="6" width="12" height="20" rx="6"/><path d="M13 22a11 11 0 0 0 22 0"/><line x1="24" y1="33" x2="24" y2="41"/><line x1="16" y1="41" x2="32" y2="41"/></svg></span>
-        <span class="instrument-photo-label">Técnica vocal (Canto)</span>
-      </div>
-      <div class="instrument-photo-card" aria-hidden="true">
-        <img src="assets/images/collage3.webp" alt="Guitarra acústica" loading="lazy">
-        <span class="instrument-icon-badge"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="19" cy="31" r="11"/><circle cx="19" cy="31" r="3.5"/><line x1="25" y1="23" x2="34" y2="7"/><rect x="32" y="4" width="7" height="6" rx="1"/></svg></span>
-        <span class="instrument-photo-label">Guitarra acústica</span>
-      </div>
-      <div class="instrument-photo-card" aria-hidden="true">
-        <img src="assets/images/curso-iniciacion.webp" alt="Guitarra eléctrica" loading="lazy">
-        <span class="instrument-icon-badge"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="33" r="8"/><circle cx="25" cy="28" r="6"/><line x1="27" y1="22" x2="36" y2="7"/><polygon points="36,7 41,9 37,13" fill="currentColor" stroke="none"/></svg></span>
-        <span class="instrument-photo-label">Guitarra eléctrica</span>
-      </div>
-      <div class="instrument-photo-card" aria-hidden="true">
-        <img src="assets/images/teclado.webp" alt="Piano" loading="lazy">
-        <span class="instrument-icon-badge"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="17" width="36" height="19" rx="2"/><line x1="14" y1="17" x2="14" y2="36"/><line x1="22" y1="17" x2="22" y2="36"/><line x1="30" y1="17" x2="30" y2="36"/><line x1="38" y1="17" x2="38" y2="36"/><rect x="11" y="17" width="4" height="10" fill="currentColor" stroke="none"/><rect x="19" y="17" width="4" height="10" fill="currentColor" stroke="none"/><rect x="27" y="17" width="4" height="10" fill="currentColor" stroke="none"/><rect x="35" y="17" width="4" height="10" fill="currentColor" stroke="none"/></svg></span>
-        <span class="instrument-photo-label">Piano</span>
-      </div>
-      <div class="instrument-photo-card" aria-hidden="true">
-        <img src="assets/images/collage4.webp" alt="Bajo eléctrico" loading="lazy">
-        <span class="instrument-icon-badge"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="15" cy="35" r="8"/><line x1="21" y1="29" x2="38" y2="6"/><polygon points="38,6 42,8 39,11" fill="currentColor" stroke="none"/></svg></span>
-        <span class="instrument-photo-label">Bajo eléctrico</span>
-      </div>
-      <div class="instrument-photo-card" aria-hidden="true">
-        <img src="assets/images/collage1.webp" alt="Batería" loading="lazy">
-        <span class="instrument-icon-badge"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="34" r="9"/><circle cx="11" cy="14" r="4"/><circle cx="37" cy="14" r="4"/><line x1="14" y1="30" x2="30" y2="18"/><line x1="34" y1="30" x2="18" y2="18"/></svg></span>
-        <span class="instrument-photo-label">Batería</span>
-      </div>
-      <div class="instrument-photo-card" aria-hidden="true">
-        <img src="assets/images/instruments/ukelele.webp" alt="Ukelele" loading="lazy">
-        <span class="instrument-icon-badge"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="30" r="8"/><circle cx="20" cy="30" r="2.5"/><line x1="25" y1="24" x2="32" y2="12"/><rect x="30" y="8" width="6" height="5" rx="1"/></svg></span>
-        <span class="instrument-photo-label">Ukelele</span>
-      </div>
-      <div class="instrument-photo-card" aria-hidden="true">
-        <img src="assets/images/instruments/flauta.webp" alt="Flauta" loading="lazy">
-        <span class="instrument-icon-badge"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="21" y="6" width="6" height="36" rx="2"/><line x1="21" y1="15" x2="27" y2="15"/><line x1="21" y1="22" x2="27" y2="22"/><line x1="21" y1="29" x2="27" y2="29"/><line x1="21" y1="36" x2="27" y2="36"/></svg></span>
-        <span class="instrument-photo-label">Flauta</span>
-      </div>
-      <div class="instrument-photo-card" aria-hidden="true">
-        <img src="assets/images/instruments/saxofon.webp" alt="Saxofón" loading="lazy" style="object-position: 78% center;">
-        <span class="instrument-icon-badge"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 7v17a10 10 0 0 0 10 10h1"/><circle cx="29" cy="35" r="5"/><line x1="15" y1="6" x2="20" y2="6"/></svg></span>
-        <span class="instrument-photo-label">Saxofón</span>
-      </div>
-      <div class="instrument-photo-card" aria-hidden="true">
-        <img src="assets/images/instruments/percusion.webp" alt="Percusión latina y colombiana" loading="lazy">
-        <span class="instrument-icon-badge"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 12h20l-4 26H18z"/><ellipse cx="24" cy="12" rx="10" ry="3"/><line x1="16" y1="22" x2="32" y2="22"/></svg></span>
-        <span class="instrument-photo-label">Percusión latina y colombiana</span>
-      </div>
-      <div class="instrument-photo-card" aria-hidden="true">
-        <img src="assets/images/instruments/violin.webp" alt="Violín" loading="lazy">
-        <span class="instrument-icon-badge"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="22" r="7"/><circle cx="20" cy="34" r="8"/><line x1="20" y1="8" x2="20" y2="16"/><line x1="8" y1="30" x2="34" y2="16"/></svg></span>
-        <span class="instrument-photo-label">Violín</span>
-      </div>
-      <div class="instrument-photo-card" aria-hidden="true">
-        <img src="assets/images/instruments/teoria.webp" alt="Teoría musical" loading="lazy">
-        <span class="instrument-icon-badge"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 14c6-3 12-3 16 0v20c-4-3-10-3-16 0z"/><path d="M40 14c-6-3-12-3-16 0v20c4-3 10-3 16 0z"/><circle cx="24" cy="8" r="2.5" fill="currentColor" stroke="none"/><line x1="26.5" y1="8" x2="26.5" y2="2"/></svg></span>
-        <span class="instrument-photo-label">Teoría musical</span>
-      </div>
       </div>
     </div>
   </div>
@@ -334,7 +283,6 @@
 <!-- ---------- DOCENTES ---------- -->
 <section id="docentes">
   <div class="wrap">
-    <div class="num-label" style="text-align:center;">03 &mdash; Nuestro equipo</div>
     <div class="section-head">
       <div class="eyebrow">Nuestro equipo</div>
       <h2>Docentes</h2>
@@ -387,7 +335,6 @@
 <!-- ---------- ESTUDIANTES / CONCIERTOS ---------- -->
 <section class="alt" id="estudiantes">
   <div class="wrap">
-    <div class="num-label" style="text-align:center;">04 &mdash; Vida académica</div>
     <div class="section-head">
       <div class="eyebrow">Vida académica</div>
       <h2>Concierto Soul La Academia</h2>
@@ -414,7 +361,7 @@
         <h2>¡Sé parte de nuestra familia!</h2>
         <p style="color:var(--text-dim)">Comunícate con nosotros y empieza ya tu proceso musical.</p>
         <ul class="contact-list">
-          <li><span class="ic">📍</span> Bogotá, Colombia — clases online y presenciales</li>
+          <li><span class="ic">📍</span> Bogotá, Colombia — clases en sede, a domicilio y online</li>
           <li><span class="ic">📞</span> <a href="tel:+573218951750">+57 321 895 1750</a></li>
           <li><span class="ic">✉️</span> <a href="mailto:soullaacademia@gmail.com">soullaacademia@gmail.com</a></li>
         </ul>
@@ -460,8 +407,8 @@
             <select id="f-modalidad" name="modalidad" required>
               <option value="" disabled selected>Selecciona una opción</option>
               <option>Virtual</option>
-              <option>Presencial</option>
-              <option>A domicilio</option>
+              <option>Presencial (en sede)</option>
+              <option>A domicilio (en tu casa)</option>
             </select>
           </div>
           <div class="field field-full">

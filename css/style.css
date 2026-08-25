@@ -1,17 +1,135 @@
+/* ============================================================
+   SOUL LA ACADEMIA — hoja de estilos
+   ------------------------------------------------------------
+   TEMAS
+   El sitio arranca en tema CLARO. El oscuro se activa poniendo
+   data-theme="dark" en <html>; lo hace el botón de la barra de
+   navegación y la elección se recuerda en localStorage.
+
+   Regla de oro para mantener esto: ningún color se escribe
+   directamente en una regla. Todo color sale de una variable
+   definida abajo, y cada variable tiene su valor en cada tema.
+   Si escribes un color a mano, ese elemento se romperá al
+   cambiar de tema.
+   ============================================================ */
+
 :root {
-  --bg: #05040a;
-  --bg-alt: #0b0814;
-  --card: #120e1e;
-  --violet: #a855f7;
-  --violet-soft: #d8b4fe;
-  --magenta: #e879f9;
-  --gold: #a855f7;       /* kept name for compatibility, now violet accent */
-  --gold-soft: #d8b4fe;
-  --text: #f4f2f9;
-  --text-dim: #b3aac2;
-  --border: #241c36;
+  color-scheme: light;
+
+  /* --- Estructura (igual en ambos temas) --- */
   --radius: 16px;
   --maxw: 1160px;
+  --nav-space: 72px;   /* alto real de la barra: 18px de padding + 54px de píldora */
+
+  /* --- Superficies --- */
+  --bg:            #FFFFFF;
+  --bg-alt:        #F5F2FA;
+  --card:          #FFFFFF;
+  --input-bg:      #FBFAFD;
+
+  /* --- Texto --- */
+  --text-strong:   #17111F;
+  --text:          #2A2336;
+  --text-dim:      #5C5470;
+  --text-faint:    #8B839C;
+
+  /* --- Bordes --- */
+  --border:        #E7E2F0;
+  --border-strong: #CEC5E0;
+
+  /* --- Acento --- */
+  --accent:        #7C3AED;   /* rellenos, bordes, estados activos */
+  --accent-rgb:    124 58 237;
+  --accent-text:   #6D28D9;   /* el acento cuando hace de TEXTO */
+  --accent-ink:    #FFFFFF;   /* texto ENCIMA de un relleno de acento */
+  --accent-2:      #C026D3;   /* segundo color de los degradados */
+
+  /* --- Sombras: en claro definen las tarjetas; en oscuro casi no existen --- */
+  --card-shadow:       0 1px 2px rgba(23,17,31,.04), 0 8px 24px rgba(23,17,31,.06);
+  --card-shadow-hover: 0 2px 4px rgba(23,17,31,.05), 0 18px 40px rgba(23,17,31,.10);
+  --shadow-accent:     0 12px 28px rgb(var(--accent-rgb) / .26);
+  --shadow-float:      0 6px 20px rgba(23,17,31,.22);
+  --photo-shadow:      0 6px 18px rgba(23,17,31,.14);
+
+  /* --- Barra de navegación (efecto vidrio) --- */
+  --nav-bg:     rgba(255,255,255,.82);
+  --nav-border: rgba(23,17,31,.09);
+
+  /* --- Tintes de acento --- */
+  --tint-soft: rgb(var(--accent-rgb) / .07);
+  --tint:      rgb(var(--accent-rgb) / .12);
+  --glow-panel: rgb(var(--accent-rgb) / .09);
+
+  /* --- SOBRE FOTOGRAFÍA: siempre claro, en los dos temas.
+         El hero y las tarjetas de instrumentos son imágenes oscuras;
+         su texto no puede seguir al tema o desaparece. --- */
+  --on-media:        #F6F2FC;
+  --on-media-dim:    #E4DCF2;
+  --on-media-accent: #D8B4FE;
+  --on-media-rule:   rgba(216,180,254,.28);
+  --on-media-shadow: 0 2px 10px rgba(0,0,0,.85), 0 0 2px rgba(0,0,0,.6);
+
+  /* --- Tratamiento de imágenes --- */
+  --hero-glow:        rgb(var(--accent-rgb) / .15);
+  --hero-scrim:       linear-gradient(180deg, rgba(2,1,6,.55) 0%, rgba(2,1,6,.5) 45%, rgba(2,1,6,.92) 100%);
+  --hero-title-glow:  0 2px 14px rgba(0,0,0,.85);
+  --collage-filter:   grayscale(12%) brightness(.98);
+  --badge-bg:         rgba(20,12,34,.45);
+  --badge-glow:       0 0 18px 3px rgb(var(--accent-rgb) / .32);
+  --badge-glow-hover: 0 0 26px 6px rgb(var(--accent-rgb) / .46);
+
+  /* --- Flecha del <select>: el color va dentro del SVG, así que
+         hace falta una versión por tema --- */
+  --select-arrow: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236d28d9' stroke-width='2'><path d='M6 9l6 6 6-6'/></svg>");
+
+  /* --- Marca de WhatsApp: no sigue al tema --- */
+  --whatsapp: #25D366;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg:            #05040A;
+  --bg-alt:        #0B0814;
+  --card:          #120E1E;
+  --input-bg:      rgba(5,4,10,.6);
+
+  --text-strong:   #FFFFFF;
+  --text:          #F4F2F9;
+  --text-dim:      #B3AAC2;
+  --text-faint:    #6F6784;
+
+  --border:        #241C36;
+  --border-strong: #3A2E56;
+
+  --accent:        #A855F7;
+  --accent-rgb:    168 85 247;
+  --accent-text:   #D8B4FE;
+  --accent-ink:    #0B0814;
+  --accent-2:      #E879F9;
+
+  --card-shadow:       none;
+  --card-shadow-hover: 0 20px 40px rgb(var(--accent-rgb) / .12);
+  --shadow-accent:     0 12px 28px rgb(var(--accent-rgb) / .35);
+  --shadow-float:      0 6px 20px rgba(0,0,0,.4);
+  --photo-shadow:      0 0 24px rgb(var(--accent-rgb) / .35);
+
+  --nav-bg:     rgba(18,14,30,.75);
+  --nav-border: #241C36;
+
+  --tint-soft:  rgb(var(--accent-rgb) / .10);
+  --tint:       rgb(var(--accent-rgb) / .15);
+  --glow-panel: rgb(var(--accent-rgb) / .22);
+
+  --hero-glow:        rgb(var(--accent-rgb) / .30);
+  --hero-scrim:       linear-gradient(180deg, rgba(2,1,6,.6) 0%, rgba(2,1,6,.55) 45%, rgba(2,1,6,.94) 100%);
+  --hero-title-glow:  0 0 40px rgb(var(--accent-rgb) / .4), 0 2px 14px rgba(0,0,0,.85);
+  --collage-filter:   grayscale(25%) brightness(.9);
+  --badge-bg:         rgba(11,8,20,.5);
+  --badge-glow:       0 0 26px 6px rgb(var(--accent-rgb) / .5), 0 0 55px 14px rgb(var(--accent-rgb) / .22);
+  --badge-glow-hover: 0 0 34px 8px rgb(var(--accent-rgb) / .7), 0 0 70px 18px rgb(var(--accent-rgb) / .38);
+
+  --select-arrow: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d8b4fe' stroke-width='2'><path d='M6 9l6 6 6-6'/></svg>");
 }
 
 * { box-sizing: border-box; }
@@ -27,18 +145,32 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Transición al cambiar de tema. Se limita a las propiedades de color
+   para no arrastrar layout ni animaciones. */
+body, .nav-pill, .nav-cta, .mv-card, .program-card, .teacher-card,
+.teacher-full-card, .contact-card, .about-text, .field input,
+.field select, .field textarea, footer, .video-frame {
+  transition: background-color .25s ease, color .25s ease, border-color .25s ease;
+}
+
 h1, h2, h3, h4 {
   font-family: "Rajdhani", "Poppins", sans-serif;
   text-transform: uppercase;
   font-weight: 700;
   letter-spacing: 0.02em;
   margin: 0 0 0.5em;
-  color: #fff;
+  color: var(--text-strong);
 }
 
 a { color: inherit; text-decoration: none; }
 
 img { max-width: 100%; display: block; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
 
 .wrap {
   max-width: var(--maxw);
@@ -47,15 +179,15 @@ img { max-width: 100%; display: block; }
   position: relative;
 }
 
-/* drop-cap first letter, like the "W" in the reference */
+/* Capitular de la primera letra */
 .dropcap::first-letter {
   font-family: "Rajdhani", sans-serif;
   font-weight: 700;
   font-size: 1.6em;
-  color: var(--violet-soft);
+  color: var(--on-media-accent);
 }
 
-/* ---------- Header (floating pill nav) ---------- */
+/* ---------- Cabecera (barra flotante tipo píldora) ---------- */
 header {
   position: sticky;
   top: 0;
@@ -76,11 +208,19 @@ header {
   display: flex;
   align-items: center;
   gap: 26px;
-  background: rgba(18, 14, 30, 0.75);
-  border: 1px solid var(--border);
+  background: var(--nav-bg);
+  border: 1px solid var(--nav-border);
   backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border-radius: 999px;
   padding: 10px 12px 10px 22px;
+  color: var(--text);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .brand {
@@ -93,6 +233,7 @@ header {
   letter-spacing: 0.05em;
   text-transform: uppercase;
   white-space: nowrap;
+  color: var(--text-strong);
 }
 
 .brand img { height: 32px; width: 32px; border-radius: 50%; }
@@ -108,21 +249,46 @@ nav.links a {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--text-dim);
-  transition: color 0.2s;
+  transition: color 0.2s, background 0.2s;
   padding: 6px 10px;
   border-radius: 999px;
 }
 
-nav.links a:hover { color: #fff; background: rgba(168,85,247,0.15); }
+nav.links a:hover { color: var(--accent-text); background: var(--tint); }
+
+/* --- Botón de tema --- */
+.theme-toggle {
+  width: 40px;
+  height: 40px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  background: var(--nav-bg);
+  border: 1px solid var(--nav-border);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 50%;
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color .2s, color .2s, background .2s;
+}
+.theme-toggle:hover { border-color: var(--accent); color: var(--accent-text); }
+.theme-toggle svg { width: 18px; height: 18px; }
+
+/* El sol se ve en tema claro (ofrece pasar a oscuro), la luna en oscuro. */
+.theme-toggle .icon-moon { display: none; }
+[data-theme="dark"] .theme-toggle .icon-sun { display: none; }
+[data-theme="dark"] .theme-toggle .icon-moon { display: block; }
 
 .nav-cta {
   display: flex;
   align-items: center;
   gap: 10px;
-  background: rgba(18, 14, 30, 0.75);
-  border: 1px solid var(--border);
+  background: var(--nav-bg);
+  border: 1px solid var(--nav-border);
   backdrop-filter: blur(14px);
-  color: var(--violet-soft);
+  -webkit-backdrop-filter: blur(14px);
+  color: var(--accent-text);
   padding: 8px 8px 8px 20px;
   border-radius: 999px;
   font-size: 0.78rem;
@@ -131,27 +297,31 @@ nav.links a:hover { color: #fff; background: rgba(168,85,247,0.15); }
   white-space: nowrap;
   transition: border-color 0.2s;
 }
-.nav-cta:hover { border-color: var(--violet); }
+.nav-cta:hover { border-color: var(--accent); }
 .nav-cta .dot {
   width: 30px; height: 30px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--violet), var(--magenta));
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
   display: flex; align-items: center; justify-content: center;
   font-size: 0.8rem;
-  color: #0b0814;
+  color: var(--accent-ink);
 }
 
 .menu-toggle {
   display: none;
-  background: none;
-  border: 1px solid var(--border);
+  background: var(--nav-bg);
+  border: 1px solid var(--nav-border);
   color: var(--text);
   font-size: 1.3rem;
   padding: 6px 12px;
-  border-radius: 6px;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
-/* ---------- Hero ---------- */
+/* ---------- Hero ----------
+   El hero es una fotografía a sangre y se mantiene oscuro en ambos
+   temas: las fotos son de conciertos con poca luz y su texto usa
+   los tokens --on-media-*, que no siguen al tema. */
 .hero {
   position: relative;
   min-height: 92vh;
@@ -159,6 +329,11 @@ nav.links a:hover { color: #fff; background: rgba(168,85,247,0.15); }
   align-items: flex-end;
   overflow: hidden;
   background: #000;
+  /* La barra flotante se superpone al hero en lugar de ocupar espacio
+     encima. En tema oscuro daba igual (fondo negro sobre foto oscura),
+     pero en claro dejaba una franja blanca y la píldora se perdía
+     contra ella. */
+  margin-top: calc(-1 * var(--nav-space));
 }
 
 .hero-bg {
@@ -211,14 +386,18 @@ nav.links a:hover { color: #fff; background: rgba(168,85,247,0.15); }
   }
   .hero-slide { opacity: 0; }
   .hero-slide:nth-child(1) { opacity: 1; }
+  body, .nav-pill, .nav-cta, .mv-card, .program-card, .teacher-card,
+  .teacher-full-card, .contact-card, .about-text, .field input,
+  .field select, .field textarea, footer, .video-frame { transition: none; }
 }
+
 .hero-bg::after {
   content: "";
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(48% 50% at 50% 42%, rgba(168,85,247,0.35), transparent 70%),
-    linear-gradient(180deg, rgba(2,1,6,0.6) 0%, rgba(2,1,6,0.55) 45%, rgba(2,1,6,0.94) 100%);
+    radial-gradient(48% 50% at 50% 42%, var(--hero-glow), transparent 70%),
+    var(--hero-scrim);
 }
 
 .hero-lines {
@@ -230,7 +409,7 @@ nav.links a:hover { color: #fff; background: rgba(168,85,247,0.15); }
   grid-template-columns: repeat(3, 1fr);
   pointer-events: none;
 }
-.hero-lines span { border-left: 1px dashed rgba(216,180,254,0.18); height: 100%; }
+.hero-lines span { border-left: 1px dashed var(--on-media-rule); height: 100%; }
 .hero-lines span:first-child { border-left: none; }
 
 .hero-content {
@@ -253,8 +432,8 @@ nav.links a:hover { color: #fff; background: rgba(168,85,247,0.15); }
 .hero-tagline {
   max-width: 220px;
   font-size: 0.85rem;
-  color: #e4dcf2;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.85), 0 0 2px rgba(0,0,0,0.6);
+  color: var(--on-media-dim);
+  text-shadow: var(--on-media-shadow);
 }
 
 .scroll-cue {
@@ -265,34 +444,42 @@ nav.links a:hover { color: #fff; background: rgba(168,85,247,0.15); }
   font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #e4dcf2;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.85), 0 0 2px rgba(0,0,0,0.6);
+  color: var(--on-media-dim);
+  text-shadow: var(--on-media-shadow);
 }
-.scroll-cue .arrow { font-size: 1.1rem; color: var(--violet-soft); animation: bob 1.8s infinite; }
+.scroll-cue .arrow { font-size: 1.1rem; color: var(--on-media-accent); animation: bob 1.8s infinite; }
 @keyframes bob { 0%,100%{ transform: translateY(0);} 50%{ transform: translateY(6px);} }
 
+/* .eyebrow tiene dos contextos: sobre fondo del tema (secciones) y
+   sobre fotografía (hero). La base sirve a las secciones; el hero la
+   sobreescribe más abajo. */
 .eyebrow {
-  color: var(--violet-soft);
+  color: var(--accent-text);
   letter-spacing: 0.25em;
   text-transform: uppercase;
   font-size: 0.78rem;
   margin-bottom: 14px;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.85), 0 0 2px rgba(0,0,0,0.6);
+}
+
+.hero .eyebrow {
+  color: var(--on-media-accent);
+  text-shadow: var(--on-media-shadow);
 }
 
 .hero h1 {
   font-size: clamp(2.6rem, 7vw, 5.2rem);
   line-height: 0.98;
   margin-bottom: 22px;
-  text-shadow: 0 0 40px rgba(168,85,247,0.45), 0 2px 14px rgba(0,0,0,0.85);
+  color: var(--on-media);
+  text-shadow: var(--hero-title-glow);
 }
 
 .hero p {
   max-width: 560px;
-  color: #e4dcf2;
+  color: var(--on-media-dim);
   font-size: 1.02rem;
   margin-bottom: 30px;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.85), 0 0 2px rgba(0,0,0,0.6);
+  text-shadow: var(--on-media-shadow);
 }
 
 .hero-bottom {
@@ -309,18 +496,20 @@ nav.links a:hover { color: #fff; background: rgba(168,85,247,0.15); }
 .social-rail a {
   width: 34px; height: 34px;
   border-radius: 50%;
-  border: 1px solid rgba(216,180,254,0.35);
+  border: 1px solid var(--on-media-rule);
   display: flex; align-items: center; justify-content: center;
-  color: var(--text-dim);
+  color: var(--on-media-dim);
   font-size: 0.85rem;
   transition: border-color 0.2s, color 0.2s;
 }
-.social-rail a:hover { border-color: var(--violet-soft); color: var(--violet-soft); }
+.social-rail a:hover { border-color: var(--on-media-accent); color: var(--on-media-accent); }
 
+/* El botón del hero va sobre fotografía: mantiene el relleno de acento
+   con texto claro en ambos temas. */
 .btn {
   display: inline-block;
-  background: linear-gradient(135deg, var(--violet), var(--magenta));
-  color: #0b0814;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: var(--accent-ink);
   font-weight: 600;
   padding: 15px 34px;
   border-radius: 999px;
@@ -330,51 +519,29 @@ nav.links a:hover { color: #fff; background: rgba(168,85,247,0.15); }
   transition: transform 0.2s, box-shadow 0.2s;
   border: 1px solid transparent;
 }
-.btn:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(168,85,247,0.35); }
+.btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-accent); }
+
+.hero .btn { color: #FFFFFF; }
 
 .btn-outline {
   background: transparent;
-  color: var(--violet-soft);
-  border: 1px solid var(--violet);
+  color: var(--accent-text);
+  border: 1px solid var(--accent);
 }
-.btn-outline:hover { background: rgba(168,85,247,0.15); }
+.btn-outline:hover { background: var(--tint); box-shadow: none; }
 
-.btn-circle {
-  width: 132px; height: 132px;
-  border-radius: 50%;
-  border: 1px solid rgba(216,180,254,0.5);
-  background: rgba(11,8,20,0.55);
-  backdrop-filter: blur(6px);
-  display: flex; align-items: center; justify-content: center;
-  text-align: center;
-  font-family: "Rajdhani", sans-serif;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  letter-spacing: 0.08em;
-  color: #fff;
-  margin: 0 auto 34px;
-  transition: border-color 0.2s, background 0.2s;
-}
-.btn-circle:hover { border-color: var(--violet-soft); background: rgba(168,85,247,0.18); }
+.hero .btn-outline { color: var(--on-media-accent); border-color: var(--on-media-accent); }
+.hero .btn-outline:hover { background: rgba(216,180,254,.15); }
 
-/* ---------- Sections ---------- */
+/* ---------- Secciones ---------- */
 section { padding: 100px 0; position: relative; }
 section.alt { background: var(--bg-alt); }
 
 .section-head { max-width: 700px; margin: 0 auto 50px; text-align: center; }
-.section-head .eyebrow { justify-content: center; }
 .section-head h2 { font-size: clamp(1.9rem, 4vw, 2.8rem); }
 .section-head p { color: var(--text-dim); }
 
-.num-label {
-  font-family: "Rajdhani", sans-serif;
-  font-size: 0.9rem;
-  color: var(--violet-soft);
-  letter-spacing: 0.15em;
-  margin-bottom: 20px;
-}
-
-/* ---------- About (numbered split panel) ---------- */
+/* ---------- Nosotros ---------- */
 .about-grid {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
@@ -383,6 +550,7 @@ section.alt { background: var(--bg-alt); }
   border-radius: var(--radius);
   overflow: hidden;
   border: 1px solid var(--border);
+  box-shadow: var(--card-shadow);
 }
 
 .about-text {
@@ -395,7 +563,7 @@ section.alt { background: var(--bg-alt); }
 
 .about-text .rule {
   width: 60px; height: 3px;
-  background: linear-gradient(90deg, var(--violet), var(--magenta));
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
   margin-bottom: 22px;
   border-radius: 4px;
 }
@@ -414,7 +582,7 @@ section.alt { background: var(--bg-alt); }
 .about-media::after {
   content: "";
   position: absolute; inset: 0;
-  background: radial-gradient(60% 60% at 50% 40%, rgba(168,85,247,0.25), transparent 70%);
+  background: radial-gradient(60% 60% at 50% 40%, var(--glow-panel), transparent 70%);
   mix-blend-mode: screen;
 }
 
@@ -430,14 +598,15 @@ section.alt { background: var(--bg-alt); }
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 28px;
-  transition: border-color .2s;
+  box-shadow: var(--card-shadow);
+  transition: border-color .2s, box-shadow .2s;
 }
-.mv-card:hover { border-color: var(--violet); }
+.mv-card:hover { border-color: var(--accent); box-shadow: var(--card-shadow-hover); }
 
-.mv-card h3 { color: var(--violet-soft); font-size: 1.1rem; margin-bottom: 12px; }
+.mv-card h3 { color: var(--accent-text); font-size: 1.1rem; margin-bottom: 12px; }
 .mv-card p { color: var(--text-dim); margin: 0; }
 
-/* ---------- Big statement ---------- */
+/* ---------- Frase destacada ---------- */
 .statement {
   text-align: center;
   padding: 70px 0;
@@ -445,7 +614,7 @@ section.alt { background: var(--bg-alt); }
 .statement h2 {
   font-size: clamp(1.8rem, 5vw, 3.2rem);
   line-height: 1.15;
-  background: linear-gradient(90deg, #fff, var(--violet-soft));
+  background: linear-gradient(90deg, var(--text-strong), var(--accent-text));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -464,13 +633,13 @@ section.alt { background: var(--bg-alt); }
   width: 100%;
   height: 220px;
   object-fit: cover;
-  filter: grayscale(25%) brightness(0.9);
+  filter: var(--collage-filter);
   transition: filter 0.3s, transform 0.3s;
 }
 .collage img:hover { filter: grayscale(0%) brightness(1); transform: scale(1.03); }
 .collage a:nth-child(4) img { height: 320px; margin-top: -100px; }
 
-/* ---------- Programs ---------- */
+/* ---------- Programas ---------- */
 .program-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -482,9 +651,14 @@ section.alt { background: var(--bg-alt); }
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
+  box-shadow: var(--card-shadow);
   transition: border-color 0.2s, transform 0.2s, box-shadow .2s;
 }
-.program-card:hover { border-color: var(--violet); transform: translateY(-4px); box-shadow: 0 20px 40px rgba(168,85,247,0.12); }
+.program-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: var(--card-shadow-hover);
+}
 
 .program-card img { width: 100%; height: 220px; object-fit: cover; filter: saturate(0.95); }
 
@@ -500,34 +674,27 @@ section.alt { background: var(--bg-alt); }
 }
 .program-body ul li { margin-bottom: 4px; }
 
-/* ---------- Instruments carousel ---------- */
-.instrument-carousel {
-  margin-top: 50px;
-  overflow: hidden;
-  -webkit-mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
-  mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
-}
-.instrument-track {
-  display: flex;
+/* ---------- Instrumentos ----------
+   Antes era un carrusel con desplazamiento automático. Se cambió a
+   cuadrícula: son doce opciones de un catálogo, algo que la gente
+   recorre buscando SU instrumento, y obligar a esperar a que pase
+   por pantalla hacía la sección difícil de usar. De paso desaparecen
+   las doce tarjetas duplicadas que existían solo para que el bucle
+   no se cortara. */
+.instrument-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 22px;
-  width: max-content;
-  animation: instrumentScroll 40s linear infinite;
-}
-.instrument-carousel:hover .instrument-track { animation-play-state: paused; }
-
-@keyframes instrumentScroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  margin-top: 50px;
 }
 
 .instrument-photo-card {
   position: relative;
-  flex: 0 0 auto;
-  width: 240px;
-  height: 300px;
+  aspect-ratio: 4 / 5;
   border-radius: 16px;
   overflow: hidden;
   border: 1px solid var(--border);
+  box-shadow: var(--card-shadow);
 }
 .instrument-photo-card img {
   width: 100%;
@@ -554,20 +721,19 @@ section.alt { background: var(--bg-alt); }
   width: 76px;
   height: 76px;
   border-radius: 50%;
-  background: rgba(11,8,20,0.5);
+  background: var(--badge-bg);
   backdrop-filter: blur(3px);
-  border: 1px solid var(--violet);
-  box-shadow: 0 0 26px 6px rgba(168,85,247,0.55), 0 0 55px 14px rgba(168,85,247,0.25);
+  -webkit-backdrop-filter: blur(3px);
+  border: 1px solid var(--on-media-accent);
+  box-shadow: var(--badge-glow);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #f4f2f9;
+  color: var(--on-media);
   z-index: 2;
   transition: box-shadow 0.3s;
 }
-.instrument-photo-card:hover .instrument-icon-badge {
-  box-shadow: 0 0 34px 8px rgba(168,85,247,0.75), 0 0 70px 18px rgba(168,85,247,0.4);
-}
+.instrument-photo-card:hover .instrument-icon-badge { box-shadow: var(--badge-glow-hover); }
 .instrument-icon-badge svg { width: 34px; height: 34px; }
 .instrument-photo-label {
   position: absolute;
@@ -575,22 +741,23 @@ section.alt { background: var(--bg-alt); }
   left: 12px;
   right: 12px;
   text-align: center;
-  color: #f4f2f9;
+  color: var(--on-media);
   font-size: 0.85rem;
   z-index: 2;
   text-shadow: 0 2px 8px rgba(0,0,0,0.7);
 }
 
-@media (max-width: 640px) {
-  .instrument-photo-card { width: 190px; height: 250px; }
+@media (max-width: 980px) {
+  .instrument-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
-@media (prefers-reduced-motion: reduce) {
-  .instrument-track { animation: none; }
-  .instrument-carousel { overflow-x: auto; }
-  .instrument-photo-card[aria-hidden="true"] { display: none; }
+@media (max-width: 640px) {
+  .instrument-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  .instrument-icon-badge { width: 60px; height: 60px; }
+  .instrument-icon-badge svg { width: 27px; height: 27px; }
+  .instrument-photo-label { font-size: 0.78rem; bottom: 12px; }
 }
 
-/* ---------- Teachers ---------- */
+/* ---------- Docentes ---------- */
 .teacher-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -603,9 +770,15 @@ section.alt { background: var(--bg-alt); }
   border-radius: var(--radius);
   padding: 24px;
   text-align: center;
-  transition: border-color .2s;
+  box-shadow: var(--card-shadow);
+  transition: border-color .2s, box-shadow .2s;
+  /* Columna flexible para que el botón "Ver más" quede alineado
+     abajo en todas las fichas, aunque los resúmenes tengan
+     distinto largo. */
+  display: flex;
+  flex-direction: column;
 }
-.teacher-card:hover { border-color: var(--violet); }
+.teacher-card:hover { border-color: var(--accent); box-shadow: var(--card-shadow-hover); }
 
 .teacher-card img {
   width: 110px;
@@ -613,8 +786,8 @@ section.alt { background: var(--bg-alt); }
   border-radius: 50%;
   object-fit: cover;
   margin: 0 auto 16px;
-  border: 2px solid var(--violet);
-  box-shadow: 0 0 24px rgba(168,85,247,0.35);
+  border: 2px solid var(--accent);
+  box-shadow: var(--photo-shadow);
 }
 
 .teacher-card h3 { font-size: 1rem; margin-bottom: 10px; }
@@ -623,8 +796,12 @@ section.alt { background: var(--bg-alt); }
   color: var(--text-dim);
   font-size: 0.9rem;
   font-style: italic;
-  min-height: 44px;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
+}
+
+.teacher-card .ver-mas {
+  margin-top: auto;
+  align-self: center;
 }
 
 .ver-mas {
@@ -632,13 +809,13 @@ section.alt { background: var(--bg-alt); }
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--violet-soft);
-  border: 1px solid var(--violet);
+  color: var(--accent-text);
+  border: 1px solid var(--accent);
   border-radius: 999px;
   padding: 7px 18px;
   transition: background .2s, color .2s;
 }
-.ver-mas:hover { background: var(--violet); color: #0b0814; }
+.ver-mas:hover { background: var(--accent); color: var(--accent-ink); }
 
 .back-link {
   display: inline-flex;
@@ -651,9 +828,9 @@ section.alt { background: var(--bg-alt); }
   margin-bottom: 30px;
   transition: color .2s;
 }
-.back-link:hover { color: var(--violet-soft); }
+.back-link:hover { color: var(--accent-text); }
 
-/* ---------- Docentes (full page) ---------- */
+/* ---------- Docentes (página completa) ---------- */
 .teacher-full-list {
   display: flex;
   flex-direction: column;
@@ -669,9 +846,10 @@ section.alt { background: var(--bg-alt); }
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 36px;
-  transition: border-color .2s;
+  box-shadow: var(--card-shadow);
+  transition: border-color .2s, box-shadow .2s;
 }
-.teacher-full-card:hover { border-color: var(--violet); }
+.teacher-full-card:hover { border-color: var(--accent); box-shadow: var(--card-shadow-hover); }
 
 .teacher-full-photo { text-align: center; }
 .teacher-full-photo img {
@@ -680,14 +858,14 @@ section.alt { background: var(--bg-alt); }
   border-radius: 50%;
   object-fit: cover;
   margin: 0 auto 18px;
-  border: 2px solid var(--violet);
-  box-shadow: 0 0 30px rgba(168,85,247,0.35);
+  border: 2px solid var(--accent);
+  box-shadow: var(--photo-shadow);
 }
 
 .role-tag {
   display: inline-block;
-  border: 1px solid var(--violet);
-  color: var(--violet-soft);
+  border: 1px solid var(--accent);
+  color: var(--accent-text);
   font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -695,22 +873,6 @@ section.alt { background: var(--bg-alt); }
   border-radius: 999px;
   margin-bottom: 6px;
 }
-
-.linkedin-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: 14px;
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--violet-soft);
-  border: 1px solid var(--violet);
-  border-radius: 999px;
-  padding: 7px 16px;
-  transition: background .2s, color .2s;
-}
-.linkedin-link:hover { background: var(--violet); color: #0b0814; }
 
 .teacher-full-body h2 { font-size: 1.4rem; margin-bottom: 8px; }
 .teacher-full-body p { color: var(--text-dim); margin-bottom: 14px; }
@@ -720,7 +882,7 @@ section.alt { background: var(--bg-alt); }
   .teacher-full-card { grid-template-columns: 1fr; text-align: center; }
 }
 
-/* ---------- Concerts ---------- */
+/* ---------- Conciertos ---------- */
 .video-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -731,11 +893,12 @@ section.alt { background: var(--bg-alt); }
   border-radius: var(--radius);
   overflow: hidden;
   border: 1px solid var(--border);
+  box-shadow: var(--card-shadow);
   aspect-ratio: 16/9;
 }
 .video-frame iframe { width: 100%; height: 100%; border: 0; }
 
-/* ---------- Contact ---------- */
+/* ---------- Contacto ---------- */
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -754,10 +917,10 @@ section.alt { background: var(--bg-alt); }
 .contact-list .ic {
   width: 38px; height: 38px;
   border-radius: 50%;
-  background: var(--card);
-  border: 1px solid var(--violet);
+  background: var(--tint-soft);
+  border: 1px solid var(--accent);
   display: flex; align-items: center; justify-content: center;
-  color: var(--violet-soft);
+  color: var(--accent-text);
   flex-shrink: 0;
 }
 
@@ -769,63 +932,75 @@ section.alt { background: var(--bg-alt); }
   text-align: center;
   position: relative;
   overflow: hidden;
+  box-shadow: var(--card-shadow);
 }
 .contact-card::before {
   content: "";
   position: absolute; inset: -40%;
-  background: radial-gradient(closest-side, rgba(168,85,247,0.25), transparent 70%);
+  background: radial-gradient(closest-side, var(--glow-panel), transparent 70%);
   z-index: 0;
 }
 .contact-card * { position: relative; z-index: 1; }
 .contact-card p { color: var(--text-dim); margin-bottom: 26px; }
 .contact-card h3 { text-align: center; }
 
+/* minmax(0, 1fr) en vez de 1fr: un <input> trae un ancho mínimo
+   propio del navegador (unos 20 caracteres). Con 1fr, que equivale a
+   minmax(auto, 1fr), ese mínimo mandaba y los campos se desbordaban
+   fuera de la tarjeta. */
 .form-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
   text-align: left;
   margin-bottom: 22px;
 }
-.field { display: flex; flex-direction: column; gap: 6px; }
+.field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
 .field-full { grid-column: 1 / -1; }
 
 .field label {
   font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--violet-soft);
+  color: var(--accent-text);
 }
 
 .field input,
 .field select,
 .field textarea {
-  background: rgba(5,4,10,0.6);
-  border: 1px solid var(--border);
+  width: 100%;
+  min-width: 0;
+  background: var(--input-bg);
+  border: 1px solid var(--border-strong);
   border-radius: 10px;
   padding: 11px 14px;
   color: var(--text);
   font-family: "Poppins", sans-serif;
   font-size: 0.92rem;
   outline: none;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 .field textarea { resize: vertical; }
 .field input::placeholder,
-.field textarea::placeholder { color: #6f6784; }
+.field textarea::placeholder { color: var(--text-faint); }
 
 .field input:focus,
 .field select:focus,
-.field textarea:focus { border-color: var(--violet); }
+.field textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--tint);
+}
 
-.field select { appearance: none; cursor: pointer;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d8b4fe' stroke-width='2'><path d='M6 9l6 6 6-6'/></svg>");
+.field select {
+  appearance: none;
+  cursor: pointer;
+  background-image: var(--select-arrow);
   background-repeat: no-repeat;
   background-position: right 12px center;
   background-size: 16px;
   padding-right: 36px;
 }
-.field select option { background: #120e1e; color: #f4f2f9; }
+.field select option { background: var(--card); color: var(--text); }
 
 .form-hint {
   margin: 14px 0 0;
@@ -838,37 +1013,38 @@ section.alt { background: var(--bg-alt); }
   .form-grid { grid-template-columns: 1fr; }
 }
 
-/* ---------- Footer ---------- */
+/* ---------- Pie ---------- */
 footer {
   border-top: 1px solid var(--border);
   padding: 40px 0;
   text-align: center;
   color: var(--text-dim);
   font-size: 0.85rem;
+  background: var(--bg-alt);
 }
 .footer-social { display: flex; gap: 18px; justify-content: center; margin-bottom: 18px; }
 .footer-social a {
   width: 38px; height: 38px;
   border-radius: 50%;
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-strong);
   display: flex; align-items: center; justify-content: center;
   color: var(--text-dim);
   transition: border-color 0.2s, color 0.2s;
 }
-.footer-social a:hover { border-color: var(--violet); color: var(--violet-soft); }
+.footer-social a:hover { border-color: var(--accent); color: var(--accent-text); }
 
-/* ---------- Floating WhatsApp ---------- */
+/* ---------- WhatsApp flotante ---------- */
 .float-wa {
   position: fixed;
   bottom: 24px;
   right: 24px;
   width: 58px; height: 58px;
   border-radius: 50%;
-  background: #25D366;
+  background: var(--whatsapp);
   display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  box-shadow: var(--shadow-float);
   z-index: 200;
-  color: #fff;
+  color: #FFFFFF;
 }
 
 /* ---------- Responsive ---------- */
@@ -876,21 +1052,34 @@ footer {
   nav.links { display: none; }
   .menu-toggle { display: inline-block; }
   .nav-pill { flex: 1; }
+  .nav-cta { display: none; }
   .nav.open nav.links {
     display: flex;
     position: absolute;
     top: 76px; left: 24px; right: 24px;
     background: var(--card);
     border: 1px solid var(--border);
+    box-shadow: var(--card-shadow-hover);
     flex-direction: column;
     padding: 20px 24px;
     border-radius: 20px;
     gap: 16px;
+    z-index: 10;
   }
   .about-grid, .contact-grid, .mv-grid, .program-grid, .video-grid { grid-template-columns: 1fr; }
   .about-media { min-height: 220px; }
   .collage { grid-template-columns: repeat(3, 1fr); }
   .collage a:nth-child(4) img { height: 220px; margin-top: 0; }
   .hero-top { flex-direction: column; }
-  .btn-circle { width: 100px; height: 100px; font-size: 0.7rem; }
+
+  /* En móvil la píldora comparte espacio con el botón de tema y el de
+     menú. Sin esto, "SOUL LA ACADEMIA" se salía por el borde derecho. */
+  .nav-pill { padding-left: 14px; min-width: 0; }
+  .brand { font-size: 0.9rem; letter-spacing: 0.03em; min-width: 0; }
+}
+
+/* Teléfonos pequeños: se queda solo el logo. */
+@media (max-width: 380px) {
+  .brand-name { display: none; }
+  .nav-pill { flex: none; }
 }
