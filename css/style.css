@@ -58,7 +58,16 @@
   /* --- Tintes de acento --- */
   --tint-soft: rgb(var(--accent-rgb) / .07);
   --tint:      rgb(var(--accent-rgb) / .12);
-  --glow-panel: rgb(var(--accent-rgb) / .09);
+  /* Los halos morados de fondo desaparecen en claro: sobre blanco se
+     leen como una mancha, no como un acento. */
+  --glow-panel: transparent;
+
+  /* Piezas que ANTES eran moradas y ahora son neutras. El acento se
+     reserva para lo que se puede pulsar. */
+  --photo-ring:  #DED6EC;                 /* aro de las fotos de docentes */
+  --badge-ring:  rgba(255,255,255,.62);   /* aro de los iconos sobre foto */
+  --quiet-text:  var(--text-dim);         /* etiquetas y botones en reposo */
+  --quiet-border: var(--border-strong);
 
   /* --- SOBRE FOTOGRAFÍA: siempre claro, en los dos temas.
          El hero y las tarjetas de instrumentos son imágenes oscuras;
@@ -75,8 +84,8 @@
   --hero-title-glow:  0 2px 14px rgba(0,0,0,.85);
   --collage-filter:   grayscale(12%) brightness(.98);
   --badge-bg:         rgba(20,12,34,.45);
-  --badge-glow:       0 0 18px 3px rgb(var(--accent-rgb) / .32);
-  --badge-glow-hover: 0 0 26px 6px rgb(var(--accent-rgb) / .46);
+  --badge-glow:       0 4px 16px rgba(0,0,0,.34);
+  --badge-glow-hover: 0 6px 22px rgba(0,0,0,.46);
 
   /* --- Flecha del <select>: el color va dentro del SVG, así que
          hace falta una versión por tema --- */
@@ -120,6 +129,12 @@
   --tint-soft:  rgb(var(--accent-rgb) / .10);
   --tint:       rgb(var(--accent-rgb) / .15);
   --glow-panel: rgb(var(--accent-rgb) / .22);
+
+  /* En oscuro el morado sí puede aparecer más: sobre negro no satura. */
+  --photo-ring:   var(--accent);
+  --badge-ring:   var(--on-media-accent);
+  --quiet-text:   var(--accent-text);
+  --quiet-border: var(--accent);
 
   --hero-glow:        rgb(var(--accent-rgb) / .30);
   --hero-scrim:       linear-gradient(180deg, rgba(2,1,6,.6) 0%, rgba(2,1,6,.55) 45%, rgba(2,1,6,.94) 100%);
@@ -603,7 +618,7 @@ section.alt { background: var(--bg-alt); }
 }
 .mv-card:hover { border-color: var(--accent); box-shadow: var(--card-shadow-hover); }
 
-.mv-card h3 { color: var(--accent-text); font-size: 1.1rem; margin-bottom: 12px; }
+.mv-card h3 { font-size: 1.1rem; margin-bottom: 12px; }
 .mv-card p { color: var(--text-dim); margin: 0; }
 
 /* ---------- Frase destacada ---------- */
@@ -724,7 +739,7 @@ section.alt { background: var(--bg-alt); }
   background: var(--badge-bg);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
-  border: 1px solid var(--on-media-accent);
+  border: 1px solid var(--badge-ring);
   box-shadow: var(--badge-glow);
   display: flex;
   align-items: center;
@@ -786,7 +801,7 @@ section.alt { background: var(--bg-alt); }
   border-radius: 50%;
   object-fit: cover;
   margin: 0 auto 16px;
-  border: 2px solid var(--accent);
+  border: 3px solid var(--photo-ring);
   box-shadow: var(--photo-shadow);
 }
 
@@ -809,13 +824,17 @@ section.alt { background: var(--bg-alt); }
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--accent-text);
-  border: 1px solid var(--accent);
+  color: var(--quiet-text);
+  border: 1px solid var(--quiet-border);
   border-radius: 999px;
   padding: 7px 18px;
-  transition: background .2s, color .2s;
+  transition: background .2s, color .2s, border-color .2s;
 }
-.ver-mas:hover { background: var(--accent); color: var(--accent-ink); }
+.ver-mas:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+}
 
 .back-link {
   display: inline-flex;
@@ -858,13 +877,13 @@ section.alt { background: var(--bg-alt); }
   border-radius: 50%;
   object-fit: cover;
   margin: 0 auto 18px;
-  border: 2px solid var(--accent);
+  border: 3px solid var(--photo-ring);
   box-shadow: var(--photo-shadow);
 }
 
 .role-tag {
   display: inline-block;
-  border: 1px solid var(--accent);
+  background: var(--tint-soft);
   color: var(--accent-text);
   font-size: 0.72rem;
   text-transform: uppercase;
@@ -917,10 +936,10 @@ section.alt { background: var(--bg-alt); }
 .contact-list .ic {
   width: 38px; height: 38px;
   border-radius: 50%;
-  background: var(--tint-soft);
-  border: 1px solid var(--accent);
+  background: var(--bg-alt);
+  border: 1px solid var(--quiet-border);
   display: flex; align-items: center; justify-content: center;
-  color: var(--accent-text);
+  color: var(--text);
   flex-shrink: 0;
 }
 
@@ -962,7 +981,7 @@ section.alt { background: var(--bg-alt); }
   font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--accent-text);
+  color: var(--text-dim);
 }
 
 .field input,
